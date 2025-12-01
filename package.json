@@ -1,0 +1,19 @@
+{
+  "name": "brm-pile-website",
+  "version": "1.0.0",
+  "description": "PT. BRM PILE - Official Website for Precast Concrete Solutions",
+  "scripts": {
+    "build": "bash build.sh",
+    "dev": "python3 -m http.server 8001 --directory src",
+    "serve": "python3 -m http.server 8001 --directory dist"
+  },
+  "keywords": [
+    "brm-pile",
+    "precast",
+    "concrete",
+    "balikpapan"
+  ],
+  "author": "PT. Balikpapan Ready Mix Pile",
+  "license": "UNLICENSED",
+  "private": true
+}
