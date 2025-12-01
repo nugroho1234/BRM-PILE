@@ -64,30 +64,46 @@ function updateActiveNav() {
 window.addEventListener('scroll', updateActiveNav);
 updateActiveNav(); // Run once on load
 
-// Contact Form Handling (Static - will be replaced with Web3Forms)
+// Contact Form Handling with Web3Forms
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            company: document.getElementById('company').value,
-            message: document.getElementById('message').value
-        };
+        const formData = new FormData(contactForm);
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
 
-        // For now, just log the data (will be replaced with Web3Forms integration)
-        console.log('Form submitted:', formData);
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
 
-        // Show success message
-        alert('Thank you for your message! We will get back to you soon.');
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
 
-        // Reset form
-        contactForm.reset();
+            const data = await response.json();
+
+            if (data.success) {
+                // Success message
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            } else {
+                // Error message
+                alert('Oops! Something went wrong. Please try again or contact us directly at info@brmpile.com');
+                console.error('Form submission error:', data);
+            }
+        } catch (error) {
+            alert('Oops! Something went wrong. Please try again or contact us directly at info@brmpile.com');
+            console.error('Form submission error:', error);
+        } finally {
+            // Re-enable button
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        }
     });
 }
 
