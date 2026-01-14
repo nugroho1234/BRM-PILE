@@ -93,11 +93,11 @@ if (contactForm) {
                 contactForm.reset();
             } else {
                 // Error message
-                alert('Oops! Something went wrong. Please try again or contact us directly at info@brmpile.com');
+                alert('Oops! Something went wrong. Please try again or contact us directly at info@brmpile.co.id');
                 console.error('Form submission error:', data);
             }
         } catch (error) {
-            alert('Oops! Something went wrong. Please try again or contact us directly at info@brmpile.com');
+            alert('Oops! Something went wrong. Please try again or contact us directly at info@brmpile.co.id');
             console.error('Form submission error:', error);
         } finally {
             // Re-enable button

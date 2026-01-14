@@ -962,7 +962,7 @@ ul {
     font-size: 40px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    display: flex;
+    display: none; /* Hidden for now, will be used later */
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
